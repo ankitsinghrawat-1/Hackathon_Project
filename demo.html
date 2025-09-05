@@ -1,24 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alumni Portal Demo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>🎓 Alumni Portal (Demo)</h1>
+    <header>
+      <h1>🎓 Alumni Portal</h1>
+      <p>Register and explore alumni easily</p>
+    </header>
 
-    <h2>Register Alumni</h2>
-    <form id="alumniForm">
-      <input type="text" id="name" placeholder="Name" required>
-      <input type="text" id="batch" placeholder="Batch" required>
-      <input type="text" id="contact" placeholder="Contact">
-      <input type="text" id="job" placeholder="Current Job">
-      <button type="submit">Add Alumni</button>
-    </form>
+    <!-- Alumni Registration Form -->
+    <section class="form-section">
+      <h2>Register Alumni</h2>
+      <form id="alumniForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="text" id="batch" placeholder="Batch (e.g., 2022)" required>
+        <input type="text" id="contact" placeholder="Contact Number">
+        <input type="text" id="job" placeholder="Current Job">
+        <input type="text" id="university" placeholder="University Name">
+        <input type="email" id="email" placeholder="University Email">
+        <input type="text" id="course" placeholder="Course / Degree">
+        <button type="submit">Add Alumni</button>
+      </form>
+    </section>
 
-    <h2>Alumni Directory</h2>
-    <ul id="alumniList"></ul>
+    <!-- Alumni Directory -->
+    <section class="directory-section">
+      <h2>Alumni Directory</h2>
+      <input type="text" id="search" placeholder="Search alumni by name, batch, job, or university...">
+      <ul id="alumniList"></ul>
+    </section>
   </div>
 
   <script src="script.js"></script>

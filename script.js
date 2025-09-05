@@ -1,34 +1,57 @@
 const alumniForm = document.getElementById("alumniForm");
 const alumniList = document.getElementById("alumniList");
+const searchInput = document.getElementById("search");
 
-async function fetchAlumni() {
-  const res = await fetch("http://localhost:5000/alumni");
-  const data = await res.json();
+// Store alumni in memory for demo purposes
+let alumniData = [];
+
+// Render alumni cards
+function renderAlumni(data) {
   alumniList.innerHTML = "";
   data.forEach(a => {
     const li = document.createElement("li");
-    li.textContent = `${a.name} | Batch ${a.batch} | ${a.job} | ${a.contact}`;
+    li.innerHTML = `
+      <b>${a.name}</b>
+      <div>
+        <span class="badge">Batch: ${a.batch}</span>
+        <span class="badge">Course: ${a.course || "N/A"}</span>
+        <span class="badge">University: ${a.university || "N/A"}</span>
+        <span class="badge">Job: ${a.job || "N/A"}</span>
+      </div>
+      <div>Contact: ${a.contact || "N/A"}</div>
+      <div>Email: ${a.email || "N/A"}</div>
+    `;
     alumniList.appendChild(li);
   });
 }
 
-alumniForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
+// Add alumni
+alumniForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const batch = document.getElementById("batch").value.trim();
+  const contact = document.getElementById("contact").value.trim();
+  const job = document.getElementById("job").value.trim();
+  const university = document.getElementById("university").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const course = document.getElementById("course").value.trim();
 
-  const name = document.getElementById("name").value;
-  const batch = document.getElementById("batch").value;
-  const contact = document.getElementById("contact").value;
-  const job = document.getElementById("job").value;
+  if (!name || !batch) return alert("Please fill Name and Batch!");
 
-  await fetch("http://localhost:5000/add-alumni", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, batch, contact, job })
-  });
-
+  alumniData.push({ name, batch, contact, job, university, email, course });
+  renderAlumni(alumniData);
   alumniForm.reset();
-  fetchAlumni();
 });
 
-// Load alumni when page opens
-fetchAlumni();
+// Search / Filter alumni
+searchInput.addEventListener("input", () => {
+  const filter = searchInput.value.toLowerCase();
+  const filtered = alumniData.filter(a =>
+    a.name.toLowerCase().includes(filter) ||
+    a.batch.toLowerCase().includes(filter) ||
+    (a.job && a.job.toLowerCase().includes(filter)) ||
+    (a.university && a.university.toLowerCase().includes(filter)) ||
+    (a.course && a.course.toLowerCase().includes(filter))
+  );
+  renderAlumni(filtered);
+});

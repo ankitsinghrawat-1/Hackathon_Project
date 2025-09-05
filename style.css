@@ -1,66 +1,138 @@
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f7fa;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    max-width: 700px;
-    margin: 30px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  h1 {
-    color: #2c3e50;
-    text-align: center;
-  }
-  
-  h2 {
-    margin-top: 25px;
-    color: #34495e;
-  }
-  
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  input {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  
-  button {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background: #2980b9;
-  }
-  
-  ul {
-    margin-top: 15px;
-    padding: 0;
-    list-style: none;
-  }
-  
-  li {
-    margin: 8px 0;
-    padding: 10px;
-    background: #ecf0f1;
-    border-left: 5px solid #3498db;
-    border-radius: 6px;
-  }
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #eef2f7;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+header h1 {
+  color: #2c3e50;
+  font-size: 2em;
+}
+header p {
+  color: #555;
+  font-size: 1em;
+}
+
+/* Form section */
+.form-section {
+  margin-bottom: 30px;
+}
+.form-section h2 {
+  color: #34495e;
+  margin-bottom: 15px;
+}
+.form-section form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.form-section input {
+  flex: 1 1 45%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95em;
+}
+.form-section button {
+  flex: 1 1 100%;
+  padding: 12px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.form-section button:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Search bar */
+#search {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95em;
+}
+
+/* Alumni directory cards */
+ul#alumniList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+ul#alumniList li {
+  background: #f9f9f9;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+ul#alumniList li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+/* Profile picture placeholder */
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Alumni card content */
+ul#alumniList b {
+  font-size: 1.2em;
+  color: #2c3e50;
+  margin-bottom: 6px;
+}
+
+ul#alumniList div {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Badges for batch, course, university, job */
+.badge {
+  display: inline-block;
+  background: #3498db;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin: 3px 3px 0 0;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .form-section input { flex: 1 1 100%; }
+  ul#alumniList { grid-template-columns: 1fr; }
+}
