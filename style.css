@@ -20,49 +20,49 @@ header {
   text-align: center;
   margin-bottom: 25px;
 }
-header h1 {
-  color: #2c3e50;
-  font-size: 2em;
-}
-header p {
-  color: #555;
-  font-size: 1em;
-}
+header h1 { color: #2c3e50; font-size: 2em; }
+header p { color: #555; font-size: 1em; }
 
 /* Form section */
 .form-section {
   margin-bottom: 30px;
 }
-.form-section h2 {
-  color: #34495e;
-  margin-bottom: 15px;
-}
+.form-section h2 { color: #34495e; margin-bottom: 15px; }
 .form-section form {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
-.form-section input {
-  flex: 1 1 45%;
+.form-section input, .form-section button {
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 0.95em;
+  border: 1px solid #ccc;
+}
+.form-section input[type="file"] {
+  padding: 5px;
 }
 .form-section button {
   flex: 1 1 100%;
-  padding: 12px;
   background: #3498db;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1em;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
 .form-section button:hover {
   background: #2980b9;
   transform: translateY(-2px);
+}
+
+/* Photo preview */
+#avatarPreview {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 2px solid #3498db;
 }
 
 /* Search bar */
@@ -90,6 +90,8 @@ ul#alumniList li {
   box-shadow: 0 3px 8px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 ul#alumniList li:hover {
@@ -97,29 +99,21 @@ ul#alumniList li:hover {
   box-shadow: 0 6px 12px rgba(0,0,0,0.12);
 }
 
-/* Profile picture placeholder */
+/* Profile picture */
 .avatar {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
+  border: 2px solid #3498db;
 }
 
 /* Alumni card content */
-ul#alumniList b {
-  font-size: 1.2em;
-  color: #2c3e50;
-  margin-bottom: 6px;
-}
+ul#alumniList b { font-size: 1.2em; color: #2c3e50; margin-bottom: 6px; }
+ul#alumniList div { margin-bottom: 5px; font-size: 0.9em; color: #555; }
 
-ul#alumniList div {
-  margin-bottom: 5px;
-  font-size: 0.9em;
-  color: #555;
-}
-
-/* Badges for batch, course, university, job */
+/* Badges */
 .badge {
   display: inline-block;
   background: #3498db;
@@ -130,6 +124,18 @@ ul#alumniList div {
   font-size: 0.8em;
   font-weight: 500;
 }
+
+/* Social icons */
+.social {
+  margin-top: 8px;
+}
+.social a {
+  color: #0077b5;
+  margin: 0 5px;
+  font-size: 1.2em;
+  transition: transform 0.2s;
+}
+.social a:hover { transform: scale(1.2); }
 
 /* Responsive adjustments */
 @media (max-width: 700px) {

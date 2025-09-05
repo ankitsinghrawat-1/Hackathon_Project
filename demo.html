@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alumni Portal Demo</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
@@ -16,7 +17,7 @@
     <!-- Alumni Registration Form -->
     <section class="form-section">
       <h2>Register Alumni</h2>
-      <form id="alumniForm">
+      <form id="alumniForm" enctype="multipart/form-data">
         <input type="text" id="name" placeholder="Full Name" required>
         <input type="text" id="batch" placeholder="Batch (e.g., 2022)" required>
         <input type="text" id="contact" placeholder="Contact Number">
@@ -24,6 +25,9 @@
         <input type="text" id="university" placeholder="University Name">
         <input type="email" id="email" placeholder="University Email">
         <input type="text" id="course" placeholder="Course / Degree">
+        <input type="url" id="linkedin" placeholder="LinkedIn Profile URL">
+        <input type="file" id="avatar" accept="image/*">
+        <input type="text" id="notes" placeholder="Achievements / Notes">
         <button type="submit">Add Alumni</button>
       </form>
     </section>
@@ -31,7 +35,7 @@
     <!-- Alumni Directory -->
     <section class="directory-section">
       <h2>Alumni Directory</h2>
-      <input type="text" id="search" placeholder="Search alumni by name, batch, job, or university...">
+      <input type="text" id="search" placeholder="Search alumni by name, batch, job, university, or course...">
       <ul id="alumniList"></ul>
     </section>
   </div>
