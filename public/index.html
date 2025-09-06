@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Alumni</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>🎓 Alumni Management Portal</h1>
+    <nav>
+      <button onclick="window.location.href='/alumni_directory.html'">📖 View Alumni Directory</button>
+    </nav>
+  </header>
+
+  <main class="form-container">
+    <h2>Register Alumni</h2>
+    <form id="alumniForm" enctype="multipart/form-data" class="form">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="text" name="batch" placeholder="Batch (e.g. 2020)" required>
+      <input type="text" name="university" placeholder="University" required>
+      <input type="email" name="email" placeholder="University Email" required>
+      <input type="text" name="course" placeholder="Course (e.g. B.Tech CSE)" required>
+      <input type="text" name="job" placeholder="Current Job / Company">
+      <input type="text" name="contact" placeholder="Contact Number">
+      <input type="url" name="linkedin" placeholder="LinkedIn Profile URL">
+      <textarea name="notes" placeholder="Achievements / Notes"></textarea>
+      <label>Upload Profile Photo:</label>
+      <input type="file" name="avatar" accept="image/*" id="avatarInput">
+      <img id="avatarPreview" src="" alt="Preview" class="avatar-preview" style="display:none;">     
+      <button type="submit" class="btn-primary">Register Alumni</button>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
