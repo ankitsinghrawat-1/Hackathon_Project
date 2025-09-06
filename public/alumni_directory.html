@@ -7,15 +7,29 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <header class="header">
     <h1>🎓 Alumni Directory</h1>
     <button onclick="window.location.href='index.html'">➕ Register Alumni</button>
   </header>
 
-  <section>
-    <input type="text" id="search" placeholder="Search alumni by name or job...">
+  <section class="directory-section">
+    <div class="search-container">
+      <label for="search" class="visually-hidden">Search alumni</label>
+      <input type="text" id="search" placeholder="Search alumni by name, job, or industry...">
+    </div>
+    
+    <div id="loading-message" class="info-message">Loading alumni directory...</div>
+    <div id="no-results-message" class="info-message" style="display: none;">No alumni found matching your search.</div>
     <div id="alumniList" class="alumni-grid"></div>
   </section>
+
+  <div id="alumniModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div id="modal-body-content" class="modal-body-content">
+        </div>
+    </div>
+  </div>
 
   <script src="alumni_directory.js"></script>
 </body>

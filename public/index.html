@@ -3,33 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Alumni</title>
+  <title>Register Alumni</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
     <h1>🎓 Alumni Management Portal</h1>
     <nav>
-      <button onclick="window.location.href='/alumni_directory.html'">📖 View Alumni Directory</button>
+      <button onclick="window.location.href='alumni_directory.html'">📖 View Alumni Directory</button>
     </nav>
   </header>
 
   <main class="form-container">
     <h2>Register Alumni</h2>
     <form id="alumniForm" enctype="multipart/form-data" class="form">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="text" name="batch" placeholder="Batch (e.g. 2020)" required>
-      <input type="text" name="university" placeholder="University" required>
-      <input type="email" name="email" placeholder="University Email" required>
-      <input type="text" name="course" placeholder="Course (e.g. B.Tech CSE)" required>
-      <input type="text" name="job" placeholder="Current Job / Company">
-      <input type="text" name="contact" placeholder="Contact Number">
-      <input type="url" name="linkedin" placeholder="LinkedIn Profile URL">
-      <textarea name="notes" placeholder="Achievements / Notes"></textarea>
-      <label>Upload Profile Photo:</label>
-      <input type="file" name="avatar" accept="image/*" id="avatarInput">
-      <img id="avatarPreview" src="" alt="Preview" class="avatar-preview" style="display:none;">     
-      <button type="submit" class="btn-primary">Register Alumni</button>
+      <fieldset id="step-1">
+        <legend>Personal & Contact Information</legend>
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="name" placeholder="Full Name" required autocomplete="name">
+
+        <label for="email">University Email</label>
+        <input type="email" id="email" name="email" placeholder="University Email" required autocomplete="email">
+
+        <label for="contact">Contact Number</label>
+        <input type="tel" id="contact" name="contact" placeholder="Contact Number" autocomplete="tel">
+
+        <label for="city">Current City & Country</label>
+        <input type="text" id="city" name="city" placeholder="e.g., New York, USA">
+        
+        <div class="form-buttons">
+          <button type="button" class="btn-primary" onclick="nextStep(1)">Next &rarr;</button>
+        </div>
+      </fieldset>
+
+      <fieldset id="step-2">
+        <legend>Academic & Professional Details</legend>
+        <label for="batch">Batch</label>
+        <input type="number" id="batch" name="batch" placeholder="e.g. 2020" required>
+
+        <label for="university">University</label>
+        <input type="text" id="university" name="university" placeholder="University" required>
+
+        <label for="course">Course</label>
+        <input type="text" id="course" name="course" placeholder="e.g. B.Tech CSE" required>
+
+        <label for="specialization">Specialization / Major</label>
+        <input type="text" id="specialization" name="specialization" placeholder="e.g., Cyber Security">
+        
+        <label for="jobTitle">Current Job Title</label>
+        <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g., Senior Software Engineer">
+
+        <label for="company">Company / Organization</label>
+        <input type="text" id="company" name="company" placeholder="e.g., Google" autocomplete="organization">
+
+        <label for="industry">Industry</label>
+        <input type="text" id="industry" name="industry" placeholder="e.g., Information Technology">
+
+        <label for="yoe">Years of Experience</label>
+        <input type="number" id="yoe" name="yoe" placeholder="e.g., 5">
+
+        <div class="form-buttons">
+          <button type="button" class="btn-secondary" onclick="prevStep(2)">&larr; Previous</button>
+          <button type="button" class="btn-primary" onclick="nextStep(2)">Next &rarr;</button>
+        </div>
+      </fieldset>
+
+      <fieldset id="step-3">
+        <legend>Networking & Profile</legend>
+        <label for="linkedin">LinkedIn Profile URL</label>
+        <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn Profile URL" autocomplete="url">
+        
+        <label for="github">GitHub Profile URL</label>
+        <input type="url" id="github" name="github" placeholder="GitHub Profile URL">
+
+        <label for="website">Personal Website / Portfolio</label>
+        <input type="url" id="website" name="website" placeholder="Personal Website URL">
+
+        <label for="notes">Achievements / Notes</label>
+        <textarea id="notes" name="notes" placeholder="Achievements, skills, or notes"></textarea>
+        
+        <div class="checkbox-group">
+          <input type="checkbox" id="mentorship" name="mentorship" value="true">
+          <label for="mentorship">Willing to mentor current students?</label>
+        </div>
+
+        <label for="avatarInput">Upload Profile Photo:</label>
+        <input type="file" name="avatar" accept="image/*" id="avatarInput">
+        <img id="avatarPreview" src="" alt="Photo Preview" class="avatar-preview" style="display:none;">
+
+        <div class="form-buttons">
+          <button type="button" class="btn-secondary" onclick="prevStep(3)">&larr; Previous</button>
+          <button type="submit" class="btn-primary">Register Alumni</button>
+        </div>
+      </fieldset>
     </form>
   </main>
 
