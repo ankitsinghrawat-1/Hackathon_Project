@@ -9,7 +9,23 @@
 <body>
   <header class="header">
     <h1>🎓 Alumni Directory</h1>
-    <button onclick="window.location.href='index.html'">➕ Register Alumni</button>
+    <nav>
+      <button id="homeBtn">🏡 Home</button>
+      <button onclick="window.location.href='register.html'">➕ Register Alumni</button>
+      
+      <div class="dropdown" id="profileDropdown" style="display: none;">
+        <button class="dropdown-toggle">
+            <img id="pfpImage" src="https://via.placeholder.com/40" alt="Profile Picture" class="pfp-image">
+        </button>
+        <div class="dropdown-content">
+          <button id="viewProfileBtn" class="btn-primary">📖 View Profile</button>
+          <button id="editProfileBtn" class="btn-primary">✏️ Edit Profile</button>
+          <button id="changePasswordBtn" class="btn-secondary">🔒 Change Password</button>
+          <button id="deleteProfileBtn" class="btn-secondary">🗑️ Delete Profile</button>
+          <button id="logoutBtn" class="btn-secondary">🔓 Logout</button>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <section class="directory-section">
@@ -27,7 +43,7 @@
     <div class="modal-content">
       <span class="close-button">&times;</span>
       <div id="modal-body-content" class="modal-body-content">
-        </div>
+      </div>
     </div>
   </div>
 

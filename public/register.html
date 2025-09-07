@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Alumni Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1 id="header-title">📝 Alumni Registration</h1>
+        <nav>
+            <button onclick="window.location.href='index.html'">🏡 Home</button>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <form id="alumniForm" class="form">
+            <legend id="form-heading">Create Your Alumni Profile</legend>
+            <div id="message-container"></div>
+            
+            <fieldset id="step-1">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <small id="password-note" style="display: none;">Leave blank to keep current password.</small>
+                
+                <label for="contact">Contact Number</label>
+                <input type="tel" id="contact" name="contact">
+
+                <label for="avatarInput">Profile Photo</label>
+                <input type="file" id="avatarInput" name="avatar" accept="image/*">
+                <img id="avatarPreview" class="avatar-preview" src="" alt="Avatar Preview" style="display: none;">
+
+                <input type="hidden" id="alumniId" name="id">
+
+                <div class="form-buttons">
+                    <button type="button" class="btn-primary" onclick="nextStep()">Next</button>
+                </div>
+            </fieldset>
+
+            <fieldset id="step-2">
+                <label for="batch">Batch / Year of Graduation</label>
+                <input type="text" id="batch" name="batch" required>
+
+                <label for="university">University</label>
+                <input type="text" id="university" name="university">
+                
+                <label for="course">Course</label>
+                <input type="text" id="course" name="course">
+
+                <div class="form-buttons">
+                    <button type="button" class="btn-secondary" onclick="prevStep()">Previous</button>
+                    <button type="button" class="btn-primary" onclick="nextStep()">Next</button>
+                </div>
+            </fieldset>
+
+            <fieldset id="step-3">
+                <label for="jobTitle">Job Title</label>
+                <input type="text" id="jobTitle" name="jobTitle">
+
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company">
+
+                <label for="yoe">Years of Experience</label>
+                <input type="number" id="yoe" name="yoe" min="0">
+
+                <label for="industry">Industry</label>
+                <input type="text" id="industry" name="industry">
+
+                <div class="form-buttons">
+                    <button type="button" class="btn-secondary" onclick="prevStep()">Previous</button>
+                    <button type="button" class="btn-primary" onclick="nextStep()">Next</button>
+                </div>
+            </fieldset>
+
+            <fieldset id="step-4">
+                <label for="linkedin">LinkedIn Profile URL</label>
+                <input type="url" id="linkedin" name="linkedin">
+
+                <label for="notes">Notes/Bio</label>
+                <textarea id="notes" name="notes" rows="4"></textarea>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="mentorship" name="mentorship">
+                    <label for="mentorship">Willing to Mentor?</label>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="button" class="btn-secondary" onclick="prevStep()">Previous</button>
+                    <button type="submit" id="submitBtn" class="btn-primary">Submit Profile</button>
+                </div>
+            </fieldset>
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
