@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
@@ -9,29 +10,33 @@ const mysql = require('mysql2/promise');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const port = 3000;
-const secretKey = 'your_jwt_secret_key'; // Use a secure key
+const port = process.env.PORT || 3000;
+const secretKey = process.env.JWT_SECRET || 'your_default_secret_key';
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // MySQL Database Connection Pool
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'ankit@54328',
-    database: 'alumni_db',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
+    // Add SSL for Render's production environment
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 // Nodemailer transporter setup
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'your_email@gmail.com', // Replace with your email
-        pass: 'your_app_password' // Replace with your app password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
@@ -229,7 +234,7 @@ app.post('/api/forgot-password', async (req, res) => {
         const resetUrl = `http://localhost:3000/reset_password.html?token=${resetToken}`;
         const mailOptions = {
             to: email,
-            from: 'your_email@gmail.com',
+            from: process.env.EMAIL_USER,
             subject: 'Alumni Directory Password Reset',
             html: `<p>You requested a password reset for your account.</p>
                    <p>Click the link below to reset your password:</p>
@@ -283,7 +288,6 @@ app.post('/api/reset-data', verifyToken, async (req, res) => {
         res.status(500).json({ error: 'Failed to clear data.' });
     }
 });
-
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
